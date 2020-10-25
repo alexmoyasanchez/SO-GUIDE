@@ -72,9 +72,9 @@ namespace WindowsFormsApplication1
 
 
                     if (mensaje == "SI")
-                        MessageBox.Show("Tu nombre ES bonito.");
+                        MessageBox.Show("Tu nombre es bonito.");
                     else
-                        MessageBox.Show("Tu nombre NO bonito. Lo siento.");
+                        MessageBox.Show("Tu nombre no es bonito. Lo siento.");
 
 
                 }
@@ -93,18 +93,7 @@ namespace WindowsFormsApplication1
                 //Si hay excepcion imprimimos error y salimos del programa con return 
                 MessageBox.Show("No he podido conectar con el servidor");
                 return;
-            } 
-
-          
-
-    
-          
-          
-
+            }                         
         }
-
-   
-
-     
     }
 }
