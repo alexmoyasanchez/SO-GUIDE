@@ -76,7 +76,7 @@ int main(int argc, char *argv[])
 			if (altura > 1.70)
 				sprintf (respuesta, "%s: eres alto",nombre);
 			else
-				sprintf (respuesta, "%s: eresbajo",nombre);
+				sprintf (respuesta, "%s: eres bajo",nombre);
 		}
 					
 		printf ("Respuesta: %s\n", respuesta);
