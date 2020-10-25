@@ -57,7 +57,7 @@ namespace WindowsFormsApplication1
                     mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
                     MessageBox.Show("La longitud de tu nombre es: " + mensaje);
                 }
-                else
+                else if (Bonito.Checked)
                 {
                     // Quiere saber si el nombre es bonito
                     string mensaje = "2/" + nombre.Text;
@@ -76,7 +76,20 @@ namespace WindowsFormsApplication1
                     else
                         MessageBox.Show("Tu nombre no es bonito. Lo siento.");
 
+                }
 
+                else
+                {
+                    string mensaje = "3/" + textaltura.Text;
+                    // Enviamos al servidor la altura tecleada
+                    byte[] msg = System.Text.Encoding.ASCII.GetBytes(mensaje);
+                    server.Send(msg);
+
+                    //Recibimos la respuesta del servidor
+                    byte[] msg2 = new byte[80];
+                    server.Receive(msg2);
+                    mensaje = Encoding.ASCII.GetString(msg2).Split('\0')[0];
+                    MessageBox.Show("Eres " + mensaje);
                 }
              
                 // Se terminó el servicio. 

@@ -32,6 +32,8 @@
             this.nombre = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textaltura = new System.Windows.Forms.TextBox();
+            this.Altura = new System.Windows.Forms.RadioButton();
             this.Longitud = new System.Windows.Forms.RadioButton();
             this.Bonito = new System.Windows.Forms.RadioButton();
             this.groupBox1.SuspendLayout();
@@ -67,6 +69,8 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.groupBox1.Controls.Add(this.textaltura);
+            this.groupBox1.Controls.Add(this.Altura);
             this.groupBox1.Controls.Add(this.Longitud);
             this.groupBox1.Controls.Add(this.Bonito);
             this.groupBox1.Controls.Add(this.label2);
@@ -78,6 +82,24 @@
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Peticion";
+            // 
+            // textaltura
+            // 
+            this.textaltura.Location = new System.Drawing.Point(28, 114);
+            this.textaltura.Name = "textaltura";
+            this.textaltura.Size = new System.Drawing.Size(62, 20);
+            this.textaltura.TabIndex = 10;
+            // 
+            // Altura
+            // 
+            this.Altura.AutoSize = true;
+            this.Altura.Location = new System.Drawing.Point(114, 114);
+            this.Altura.Name = "Altura";
+            this.Altura.Size = new System.Drawing.Size(98, 17);
+            this.Altura.TabIndex = 9;
+            this.Altura.TabStop = true;
+            this.Altura.Text = "Dime si soy alta";
+            this.Altura.UseVisualStyleBackColor = true;
             // 
             // Longitud
             // 
@@ -124,6 +146,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton Longitud;
         private System.Windows.Forms.RadioButton Bonito;
+        private System.Windows.Forms.TextBox textaltura;
+        private System.Windows.Forms.RadioButton Altura;
     }
 }
 

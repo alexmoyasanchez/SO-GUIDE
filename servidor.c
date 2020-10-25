@@ -74,9 +74,9 @@ int main(int argc, char *argv[])
 			p = strtok( NULL, "/");
 			altura =  atof (p);
 			if (altura > 1.70)
-				sprintf (respuesta, "%s: eres alto",nombre);
+				strcpy (respuesta, "alta");
 			else
-				sprintf (respuesta, "%s: eres bajo",nombre);
+				strcpy (respuesta, "baja");
 		}
 					
 		printf ("Respuesta: %s\n", respuesta);
