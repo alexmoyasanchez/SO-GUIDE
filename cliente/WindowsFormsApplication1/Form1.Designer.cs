@@ -166,6 +166,7 @@
 
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox nombre;
+        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton Longitud;
@@ -173,7 +174,6 @@
         private System.Windows.Forms.TextBox textaltura;
         private System.Windows.Forms.RadioButton Altura;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button1;
     }
 }
 
