@@ -5,7 +5,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <stdio.h>
-
+#include <ctype.h>
 
 
 int main(int argc, char *argv[])
@@ -71,12 +71,13 @@ int main(int argc, char *argv[])
 				terminar = 1;
 			else if (codigo == 1)
 				sprintf (respuesta,"%d",strlen (nombre));
-			else if (codigo == 2)
+			else if (codigo == 2){
 				if((nombre[0] == 'M') || (nombre[0] == 'S'))
-				strcpy (respuesta,"SI");
+				    strcpy (respuesta,"SI");
 				else
 					strcpy (respuesta,"NO");
-			else{
+            }
+			else if (codigo == 3){
 				p = strtok( NULL, "/");
 				altura =  atof (nombre);
 				if (altura > 1.70)
@@ -84,6 +85,27 @@ int main(int argc, char *argv[])
 				else
 					strcpy (respuesta, "baja");
 			}
+        
+            else if (codigo == 4){
+                //pasamos todo el nombre pasado por el comando a minúsculas para poder comparar todas las letras correctamente.
+                for (int indice = 0; nombre[indice] != '\0'; ++indice)
+		            nombre[indice] = tolower(cadena[indice]);
+                //miramos que la primera letra sea igual que la última y así seguidamente hasta llegar a la del medio
+                for(int i; i<((strlen[nombre]-1)/2); ,i++){
+                    if(nombre[i] != nombre[strelen[nombre]-1-i])
+                        int error = 1;
+                }
+                if(error == 0)
+                    strcpy (respuesta, "SI");
+                else 
+                    strcpy (respuesta, "NO");
+            }  
+            else
+            {
+                for (int i = 0; nombre[i] != '\0'; i++){
+		            nombre[i] = toupper(cadena[i]);
+                strcpy (respuesta, nombre);
+            }
 			
 			if (codigo != 0){
 				printf ("Respuesta: %s\n", respuesta);
