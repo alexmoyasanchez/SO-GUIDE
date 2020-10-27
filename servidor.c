@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 	//htonl formatea el numero que recibe al formato necesario
 	serv_adr.sin_addr.s_addr = htonl(INADDR_ANY);
 	// establecemos el puerto de escucha
-	serv_adr.sin_port = htons(9100);
+	serv_adr.sin_port = htons(9400);
 	if (bind(sock_listen, (struct sockaddr *) &serv_adr, sizeof(serv_adr)) < 0)
 		printf ("Error al bind");
 	
@@ -40,7 +40,8 @@ int main(int argc, char *argv[])
 	
 	int i;
 	// bucle infinito
-	for (;;){
+	for (;;)
+	{
 		printf ("Escuchando\n");
 		
 		sock_conn = accept(sock_listen, NULL, NULL);
@@ -49,7 +50,7 @@ int main(int argc, char *argv[])
 		
 		//Bucle atención al cliente
 		int terminar = 0;
-		while(terminar != 0){			
+		while(terminar != 1){			
 			
 			// Ahora recibimos la petici?n
 			ret=read(sock_conn,peticion, sizeof(peticion));
@@ -87,31 +88,37 @@ int main(int argc, char *argv[])
 			}
         
             else if (codigo == 4){
-                //pasamos todo el nombre pasado por el comando a minúsculas para poder comparar todas las letras correctamente.
-                for (int indice = 0; nombre[indice] != '\0'; ++indice)
-		            nombre[indice] = tolower(cadena[indice]);
+                int error = 0;
+				//pasamos todo el nombre pasado por el comando a minúsculas para poder comparar todas las letras correctamente.
+				int i=0;
+				for (int indice = 0; nombre[indice] != '\0'; ++indice) {
+		            nombre[indice] = tolower(nombre[indice]);
+					i++;
+				}
                 //miramos que la primera letra sea igual que la última y así seguidamente hasta llegar a la del medio
-                for(int i; i<((strlen[nombre]-1)/2); ,i++){
-                    if(nombre[i] != nombre[strelen[nombre]-1-i])
-                        int error = 1;
-                }
-                if(error == 0)
-                    strcpy (respuesta, "SI");
-                else 
+                for(int aux = 0; nombre[aux] != '\0' ; aux++)
+                    if(nombre[aux] != nombre[i-1-aux])
+						error = 1;
+					
+                if(error == 1)
                     strcpy (respuesta, "NO");
+                else 
+                    strcpy (respuesta, "SI");
             }  
             else
             {
-                for (int i = 0; nombre[i] != '\0'; i++){
-		            nombre[i] = toupper(cadena[i]);
+                for (int i = 0; nombre[i] != '\0'; i++)
+		            nombre[i] = toupper(nombre[i]);
                 strcpy (respuesta, nombre);
             }
 			
-			if (codigo != 0){
+			if (codigo != 0)
+			{
 				printf ("Respuesta: %s\n", respuesta);
 				write (sock_conn,respuesta, strlen(respuesta));
 			}
 		}
-		close(sock_conn); 
+		
 	}
+	close(sock_conn); 
 }
